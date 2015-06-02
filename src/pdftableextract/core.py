@@ -316,7 +316,9 @@ def process_page(infile, pgs,
     
     ret = p.communicate()[0]
     if whitespace != 'raw' :
-      ret = whitespace.sub( "" if whitespace == "none" else " ", ret )
+      if whitespace == "none":
+          ret = whitespace.sub("", ret)
+      #ret = whitespace.sub( "" if whitespace == "none" else " ", ret )
       if len(ret) > 0 :
         ret = ret[ (1 if ret[0]==' ' else 0) : 
                    len(ret) - (1 if ret[-1]==' ' else 0) ]
